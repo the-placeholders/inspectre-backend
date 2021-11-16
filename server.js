@@ -25,6 +25,16 @@ db.once('open', function () {
 app.get('/location', handleGetCities);
 app.get('/latlon', handleLocationIq);
 
+app.get('/test', (req, res) => {
+    verifyUser(req, (error, user) => {
+        if (error) {
+            res.send('invalid token');
+        } else {
+            res.send('test validated');
+        }
+    })
+});
+
 async function handleGetCities(req, res) {
     try {
         console.log(req.query.city);
