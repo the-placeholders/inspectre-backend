@@ -18,9 +18,26 @@ mongoose.connect(process.env.DB_URL, { useNewUrlParser: true, useUnifiedTopology
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
-  console.log('Mongoose is connected')
+    console.log('Mongoose is connected')
 });
+
+app.get('/location',handleGetCities);
+
+async function handleGetCities(req, res) {
+    try {
+        console.log(req.query.city);
+        let locationsFromDB = await Locations.find({ city: req.query.city });
+        if (locationsFromDB) {
+            res.status(200).send(locationsFromDB)
+        } else {
+            res.status(404).send('Locations not found.');
+        }
+    } catch (e) {
+        console.log(req.query.city);
+        res.status(500).send('Server error.');
+    }
+}
 
 const PORT = process.env.PORT || 3001;
 
-app.listen(PORT || 3001);
+app.listen(PORT || 3001, () => console.log(`listening on ${PORT}`));

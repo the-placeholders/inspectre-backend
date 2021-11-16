@@ -1,7 +1,7 @@
-'use strict';
+/*'use strict';
 
-//const jwt = require('jsonwebtokens');
-//const jwksclient = require('jwks-rsa');
+const jwt = require('jsonwebtokens');
+const jwksclient = require('jwks-rsa');
 
 const client = jwksClient({
     jwksUri: process.env.AUTH_DOMAIN
@@ -25,4 +25,4 @@ try {
 }
 }
 
-module.exports = verifyUser;
+module.exports = verifyUser;*/
