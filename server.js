@@ -44,15 +44,28 @@ app.get("/library", (req, res) => {
       res.send("invalid token");
     } else {
       try {
-        console.log("MADE IT");
         const email = user.email;
-        console.log(email);
-        let hauntedPlaces = await Library.find({ email });
-        if (hauntedPlaces) {
-          console.log(hauntedPlaces);
-          res.status(200).send(hauntedPlaces);
+        let userLib = await Library.find({ email });
+        if (userLib.length > 0) {
+          let locationData = await getLibLocations(userLib);
+          console.log(locationData);
+          console.log('if');
+          let fullLib = {
+              locations: locationData,
+              email: email,
+              reviews: []
+          }
+          //not wrapping object in an array breaks the fontend for now
+          res.status(200).send([fullLib]);
         } else {
-          res.status(404).send("No Ghosts Here");
+          console.log('else');  
+          userLib = Library.create({
+              locations:[],
+              email: email,
+              reviews: []  
+          });
+          //not wrapping object in an array breaks the fontend for now
+          res.status(201).send([userLib]);  
         }
       } catch (e) {
         console.error(e);
@@ -61,6 +74,35 @@ app.get("/library", (req, res) => {
     }
   });
 });
+
+app.put('/library', (req,res)=> {
+    verifyUser(req, async (error,user) => {
+        if(error) {
+             res.send('invalid token');
+        }else {
+                //const id = req.params.id;
+                const email = user.email;
+                const updatedData = {...req.body};
+            try {
+                const updatedLibrary = await Library.findOneAndUpdate({email: email},updatedData, {overwrite: true});
+                console.log(updatedLibrary);
+                res.status(200).send(updatedLibrary);
+            } catch (e) {
+                res.status(500).send('server error');
+            }
+        }
+    })
+});
+
+async function getLibLocations(libObj) {
+    //console.log(libObj);
+    let locations = libObj[0].locations;
+    //console.log('getting lib locations');
+    let resData = await Locations.find({
+        _id: { $in: locations}
+    });
+    return resData;
+}
 
 async function handleGetCities(req, res) {
   try {
@@ -79,6 +121,8 @@ async function handleGetCities(req, res) {
     res.status(500).send("Server error.");
   }
 }
+
+
 
 const PORT = process.env.PORT || 3001;
 
