@@ -5,9 +5,9 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const axios = require('axios');
-
 const Locations = require('./Models/Location');
 const verifyUser = require('./auth.js');
+const handleLocationIq = require('./locationIq.js');
 
 const app = express();
 app.use(cors());
@@ -21,12 +21,23 @@ db.once('open', function () {
     console.log('Mongoose is connected')
 });
 
-app.get('/location',handleGetCities);
+app.get('/location', handleGetCities);
+app.get('/latlon', handleLocationIq);
+
+app.get('/test', (req, res) => {
+    verifyUser(req, (error, user) => {
+        if (error) {
+            res.send('invalid token');
+        } else {
+            res.send('test validated');
+        }
+    })
+});
 
 async function handleGetCities(req, res) {
     try {
         console.log(req.query.city);
-        let locationsFromDB = await Locations.find({ city: req.query.city });
+        let locationsFromDB = await Locations.find({ city: req.query.city, state_abbrev: req.query.state });
         if (locationsFromDB) {
             res.status(200).send(locationsFromDB)
         } else {

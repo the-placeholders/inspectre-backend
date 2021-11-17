@@ -1,6 +1,7 @@
 # Inspectre
 
-## Team: 
+## Team:
+
 * Andrew Kim
 * Brannon Starnes
 * Min Xie
@@ -20,7 +21,7 @@ Searching for a fright? Inspectre is an application that lets users search for h
   * Raaj - communication, project management, organization
   * Scott - experimenter, organizing
 * How can you best utilize these strengths in the execution of your project?
-  * Pair people together based on their proficiencies and cover each other's weaknesses. 
+  * Pair people together based on their proficiencies and cover each other's weaknesses.
 * In which professional competencies do you each want to develop greater strength?
   * Andrew - project planning
   * Brannon - get better at backend stuff
@@ -39,11 +40,11 @@ Searching for a fright? Inspectre is an application that lets users search for h
 * What will your team do if one person is taking over the project and not letting the other members contribute?
   * First of all, no one will really want to. If it happens we'll communicate and escalate to TA/Instructors if unresolved.
 * How will you approach each other and the challenges of the project knowing that it is impossible for all members to be at the exact same place in understanding and skill level?
-  * Pairing people up to cover each other's weaknesses, rotate working pairs to make sure everyone works together. 
+  * Pairing people up to cover each other's weaknesses, rotate working pairs to make sure everyone works together.
 * How will you raise concerns to members who are not adequately contributing?
   * Open communication, escalate if necessary.
 * How and when will you escalate the conflict if your resolution attempts are unsuccessful?
-  * If it doesn't resolve after talking about it, we will alert a TA/Instructor regarding the ongoing issue. 
+  * If it doesn't resolve after talking about it, we will alert a TA/Instructor regarding the ongoing issue.
 
 ## Communication Plan
 
@@ -54,13 +55,13 @@ Searching for a fright? Inspectre is an application that lets users search for h
 * How often will you take breaks?
   * As needed. Lunch from 12pm-1:30pm
 * What is your plan if you start to fall behind?
-  * Adjust MVP as needed. Figure out where obstacles are and whether or not they are within scope. 
+  * Adjust MVP as needed. Figure out where obstacles are and whether or not they are within scope.
 * How will you communicate after hours and on the weekend?
   * Slack
 * What is your strategy for ensuring everyone’s voice is heard?
   * Everyone needs to talk at standup. Equal time for sharing. Switch roles of meeting moderator, scribe, etc. every meeting.
 How will you ensure that you are creating a safe environment where everyone feels comfortable speaking up?
-  * Speak with respect, not shooting down people's ideas, disagree respectfully. Essentially treat everyone with dignity. 
+  * Speak with respect, not shooting down people's ideas, disagree respectfully. Essentially treat everyone with dignity.
 
 ## Work Plan
 
@@ -68,18 +69,17 @@ How will you ensure that you are creating a safe environment where everyone feel
   * Trello. Break down features of the application into tangible parts. Assign teams to tackle those parts. Collaborate with entire team during integration and push into the main branch - end of day meeting.
 * What project management tool will be used?
   * Trello, Envision, and Miro
-  
 
 ## Git Process
 
 * What components of your project will live on GitHub?
-  * The entire thing. Front end application, and backend server. 
+  * The entire thing. Front end application, and backend server.
 * How will you share the repository with your teammates?
   * We're all in an organization.
 * What is your Git flow?
   * main branch for deployable app
   * staging branch for pushes throughout the day, place to integrate each other's work.
-  * individual working branches where we do most of the individual coding. 
+  * individual working branches where we do most of the individual coding.
 * Will you be using a PR review workflow? If so, consider:
 * How many people must review a PR?
   * At least one to review PR and final pushes into main happens during EOD meetings where we can all sign off on it.
