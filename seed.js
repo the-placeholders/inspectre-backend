@@ -1,9 +1,7 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
 const locationData = require('./Locations.json');
-
 const Location = require('./Models/Location.js');
-//const locationArray = JSON.parse(JSON.stringify(locationData));
 
 async function seed() {
     

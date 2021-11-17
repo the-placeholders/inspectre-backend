@@ -1,5 +1,7 @@
 'use strict';
 
+const mongoose = require ('mongoose');
+
 const userSchema = new mongoose.Schema({
     join_date: Date,
     email: String, //from auth0
