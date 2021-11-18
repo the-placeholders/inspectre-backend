@@ -57,15 +57,15 @@ app.get("/library", (req, res) => {
           }
           //not wrapping object in an array breaks the fontend for now
           res.status(200).send([fullLib]);
-        } else {
-          console.log('else');  
-          userLib = Library.create({
+        } else { 
+          let newUserLib = await Library.create({
               locations:[],
               email: email,
               reviews: []  
           });
+          console.log(newUserLib);
           //not wrapping object in an array breaks the fontend for now
-          res.status(201).send([userLib]);  
+          res.status(201).send([newUserLib]);  
         }
       } catch (e) {
         console.error(e);
