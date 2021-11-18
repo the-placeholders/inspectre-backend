@@ -82,9 +82,9 @@ app.put('/library', (req,res)=> {
         }else {
                 //const id = req.params.id;
                 const email = user.email;
-                const updatedData = {...req.body};
+                const updatedData = {...req.body, __v: 0};
             try {
-                const updatedLibrary = await Library.findOneAndUpdate({email: email},updatedData, {overwrite: true});
+                const updatedLibrary = await Library.findOneAndUpdate({email: email},updatedData, {new: true});
                 console.log(updatedLibrary);
                 res.status(200).send(updatedLibrary);
             } catch (e) {
