@@ -27,6 +27,7 @@ db.once("open", function () {
 
 app.get("/location", handleGetCities);
 app.get("/latlon", handleLocationIq);
+// app.delete('/library/:id',handleDelLocations)
 
 app.get("/test", (req, res) => {
   verifyUser(req, (error, user) => {
@@ -122,7 +123,23 @@ async function handleGetCities(req, res) {
   }
 }
 
-
+// async function handleDelLocations(request,response){
+//   const id = request.params.id;
+//    try {
+//         const delLocation = await Library.findOne({ _id: id });
+//         if (!delLocation) {
+//           response.status(400).send('could not delete location');
+//         } else {
+//           await Library.findByIdAndDelete(id);
+//           response.status(204).send('loc gone ');
+//         }
+//       } catch (e) {
+//         console.log(e);
+//         response.status(500).send('server error');
+//       }
+//     }
+  
+ 
 
 const PORT = process.env.PORT || 3001;
 
