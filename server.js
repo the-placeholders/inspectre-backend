@@ -81,6 +81,7 @@ app.put('/library', (req,res)=> {
         if(error) {
              res.send('invalid token');
         }else {
+
                 //const id = req.params.id;
                 const email = user.email;
                 const updatedData = {...req.body, __v: 0};
@@ -108,8 +109,18 @@ async function getLibLocations(libObj) {
 async function handleGetCities(req, res) {
   try {
     console.log(req.query.city);
+    /*let city = req.query.city;
+    city = city.toLowerCase();
+    console.log(city[0]);
+    city = city.replace(city[0],city[0].toUpperCase());*/
+    let city = req.query.city;
+
+    if(city){
+      city = normalizeSearch(req.query.city);
+    }
+    
     let locationsFromDB = await Locations.find({
-      city: req.query.city,
+      city: city,
       state_abbrev: req.query.state,
     });
     if (locationsFromDB) {
@@ -118,9 +129,17 @@ async function handleGetCities(req, res) {
       res.status(404).send("Locations not found.");
     }
   } catch (e) {
+    console.log(e);
     console.log(req.query.city);
     res.status(500).send("Server error.");
   }
+}
+
+function normalizeSearch(city) {
+  city = city.trim();
+  city = city.toLowerCase();
+  city = city.replace(city[0],city[0].toUpperCase());
+  return city;
 }
 
 // async function handleDelLocations(request,response){
